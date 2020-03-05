@@ -1,4 +1,4 @@
-﻿namespace TimeTracker
+﻿namespace LazyTimeTracker
 {
     partial class LazyTimeTracker
     {

@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TimeTracker
+namespace LazyTimeTracker
 {
     public partial class TimeEntryEditor : Form
     {
-        BookingElement BookingElementIRepresent;
+        private BookingElement BookingElementIRepresent;
 
         public TimeEntryEditor(BookingElement bookingElement)
         {
@@ -22,6 +22,7 @@ namespace TimeTracker
 
         private void TimeEntryEditor_Load(object sender, EventArgs e)
         {
+            txtName.Text = BookingElementIRepresent.DisplayName;
             txtBuchungsElement.Text = BookingElementIRepresent.TimeElement;
             txtHRElement.Text = BookingElementIRepresent.HRElement;
         }
@@ -30,6 +31,7 @@ namespace TimeTracker
         {
             BookingElementIRepresent.TimeElement = txtBuchungsElement.Text;
             BookingElementIRepresent.HRElement = txtHRElement.Text;
+            BookingElementIRepresent.DisplayName = txtName.Text;
             Program.bookingElements.Add(BookingElementIRepresent);
             this.Close();
         }

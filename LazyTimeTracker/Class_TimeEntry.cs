@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TimeTracker
+namespace LazyTimeTracker
 {
     public class TimeEntry
     {
@@ -29,17 +29,28 @@ namespace TimeTracker
 
     public class BookingElement
     {
+        private string displayName;
         private string timeElement;
         private string hrElement;
         
 
-        public BookingElement(string STimeElement, string SHrElement)
+        public BookingElement(string SDisplayName, string STimeElement, string SHrElement)
         {
+            this.displayName = SDisplayName;
             this.timeElement = STimeElement;
             this.hrElement = SHrElement;
         }
 
         public string TimeElement { get => this.timeElement; set => this.timeElement = value; }
         public string HRElement { get => this.hrElement; set => this.hrElement = value; }
+        public string DisplayName { get => this.displayName; set => this.displayName = value; }
+
+
+        public override string ToString()
+        {
+            return this.DisplayName + " <" + this.timeElement + " | " + this.hrElement + ">";
+        }
     }
+
+
 }

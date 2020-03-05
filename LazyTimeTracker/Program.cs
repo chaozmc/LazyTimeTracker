@@ -4,12 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TimeTracker
+namespace LazyTimeTracker
 {
     static class Program
     {
-        public static IList<TimeEntry> timeEntries = new List<TimeEntry>();
-        public static IList<BookingElement> bookingElements = new List<BookingElement>();
+        public static IList<TimeEntry> timeEntries = new System.ComponentModel.BindingList<TimeEntry>();
+        public static IList<BookingElement> bookingElements = new System.ComponentModel.BindingList<BookingElement>();
         /// <summary>
         /// Der Haupteinstiegspunkt für die Anwendung.
         /// </summary>
