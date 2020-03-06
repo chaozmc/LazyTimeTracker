@@ -13,11 +13,12 @@ namespace LazyTimeTracker
     public partial class TimeEntryEditor : Form
     {
         private BookingElement BookingElementIRepresent;
-
-        public TimeEntryEditor(BookingElement bookingElement)
+        private bool Edit;
+        public TimeEntryEditor(BookingElement bookingElement, bool edit)
         {
             InitializeComponent();
             BookingElementIRepresent = bookingElement;
+            Edit = edit;
         }
 
         private void TimeEntryEditor_Load(object sender, EventArgs e)
@@ -32,7 +33,14 @@ namespace LazyTimeTracker
             BookingElementIRepresent.TimeElement = txtBuchungsElement.Text;
             BookingElementIRepresent.HRElement = txtHRElement.Text;
             BookingElementIRepresent.DisplayName = txtName.Text;
-            Program.bookingElements.Add(BookingElementIRepresent);
+            if (!Edit)
+            {
+                Program.bookingElements.Add(BookingElementIRepresent);
+            } else
+            {
+                Program.bookingElements.Remove(BookingElementIRepresent);
+                Program.bookingElements.Add(BookingElementIRepresent);
+            }
             this.Close();
         }
     }

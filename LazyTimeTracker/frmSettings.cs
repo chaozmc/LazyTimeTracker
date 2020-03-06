@@ -20,10 +20,9 @@ namespace LazyTimeTracker
         private void button1_Click(object sender, EventArgs e)
         {
             BookingElement temp = new BookingElement("HAAI", "9034243812904839201", "HR36369");
-            TimeEntryEditor timeEntryEditor = new TimeEntryEditor(temp);
+            TimeEntryEditor timeEntryEditor = new TimeEntryEditor(temp, false);
             timeEntryEditor.ShowDialog(this);
             listBox1.Update();
-            
         }
 
         private void frmSettings_Load(object sender, EventArgs e)
@@ -33,8 +32,23 @@ namespace LazyTimeTracker
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Program.bookingElements.Remove((BookingElement)listBox1.SelectedItem);
+            if (MessageBox.Show("Really delete?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Program.bookingElements.Remove((BookingElement)listBox1.SelectedItem);
+                listBox1.Update();
+            }   
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            TimeEntryEditor timeEntryEditor = new TimeEntryEditor((BookingElement)listBox1.SelectedItem, true);
+            timeEntryEditor.ShowDialog(this);
             listBox1.Update();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

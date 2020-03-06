@@ -12,12 +12,15 @@ namespace LazyTimeTracker
         private DateTime endTime;
         private BookingElement bookingElement;
         private string invoice;
+        private string description;
 
-        public TimeEntry(DateTime STime, DateTime ETime, string TimeElement, BookingElement OBookingElement )
+        public TimeEntry(DateTime STime, DateTime ETime, BookingElement OBookingElement, string SInvoice, string SDescription )
         {
             this.StartTime = STime;
             this.EndTime = ETime;
             this.bookingElement = OBookingElement;
+            this.invoice = SInvoice;
+            this.description = SDescription;
         }
 
 
@@ -25,6 +28,7 @@ namespace LazyTimeTracker
         public DateTime EndTime { get => this.endTime; set => this.endTime = value; }
         public BookingElement BookingElement { get => this.bookingElement; set => this.bookingElement = value; }
         public string Invoice { get => this.invoice; set => this.invoice = value; }
+        public string Description { get => this.description; set => this.description = value; }
     }
 
     public class BookingElement

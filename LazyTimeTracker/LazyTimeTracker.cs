@@ -17,10 +17,52 @@ namespace LazyTimeTracker
             InitializeComponent();
         }
 
-        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
+        {
+            NewTimeEntry newTimeEntry = new NewTimeEntry();
+            newTimeEntry.ShowDialog(this);
+        }
+
+        private void projekteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmSettings frm = new frmSettings();
             frm.Show();
+        }
+
+        private void LazyTimeTracker_Load(object sender, EventArgs e)
+        {
+            notifyIcon1.Visible = true;
+        }
+
+        private void neuerEintragToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NewTimeEntry newTimeEntry = new NewTimeEntry();
+            newTimeEntry.ShowDialog(this);
+        }
+
+        private void TaskIcon_DoubleClick(object sender, MouseEventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                this.Hide();
+            } else
+            {
+                this.Show();
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void LazyTimeTracker_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            notifyIcon1.Visible = false;
+        }
+
+        private void LazyTimeTracker_FormResize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                this.Hide();
+            }
         }
     }
 }
