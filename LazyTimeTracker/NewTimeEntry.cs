@@ -5,8 +5,10 @@ namespace LazyTimeTracker
 {
     public partial class NewTimeEntry : Form
     {
-        public NewTimeEntry()
+        DateTime targetDate;
+        public NewTimeEntry(DateTime TargetDate)
         {
+            targetDate = TargetDate;
             InitializeComponent();
         }
 
@@ -14,12 +16,10 @@ namespace LazyTimeTracker
         {
             project.DataSource = Program.bookingElements;
             einkaufsbeleg.DataSource = Program.Einkaufsbelege;
-            DateTime now = new DateTime();
-            now = System.DateTime.Now;
-            hourStart.Value = now.Hour;
-            minStart.Value = now.Minute;
-            hourEnd.Value = now.Hour;
-            minEnd.Value = now.Minute;
+            hourStart.Value = DateTime.Now.Hour;
+            minStart.Value = DateTime.Now.Minute;
+            hourEnd.Value = DateTime.Now.Hour;
+            minEnd.Value = DateTime.Now.Minute;
 
         }
 
@@ -50,9 +50,8 @@ namespace LazyTimeTracker
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DateTime DateTimeBegin = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, (int)hourStart.Value, (int)minStart.Value, 0);
-            DateTime DateTimeEnd = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, (int)hourEnd.Value, (int)minEnd.Value, 0);
-
+            DateTime DateTimeBegin = new DateTime(targetDate.Year, targetDate.Month, targetDate.Day, (int)hourStart.Value, (int)minStart.Value, 0);
+            DateTime DateTimeEnd = new DateTime(targetDate.Year, targetDate.Month, targetDate.Day, (int)hourEnd.Value, (int)minEnd.Value, 0);
 
             TimeEntry timeEntry = new TimeEntry(DateTimeBegin, DateTimeEnd, (BookingElement)project.SelectedItem, (string)einkaufsbeleg.SelectedItem, txtDescription.Text);
             Program.timeEntries.Add(timeEntry);
