@@ -28,6 +28,7 @@ namespace LazyTimeTracker
         private void frmSettings_Load(object sender, EventArgs e)
         {
             listBox1.DataSource = Program.bookingElements;
+            listEinkaufsbelege.DataSource = Program.Einkaufsbelege;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -49,6 +50,22 @@ namespace LazyTimeTracker
         private void button4_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Program.Einkaufsbelege.Add(txtEinkaufsbeleg.Text);
+            txtEinkaufsbeleg.Text = "";
+            listEinkaufsbelege.Update();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Really delete?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Program.Einkaufsbelege.Remove((string)listEinkaufsbelege.SelectedItem);
+                listBox1.Update();
+            }
         }
     }
 }

@@ -37,6 +37,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.project = new System.Windows.Forms.ComboBox();
+            this.einkaufsbeleg = new System.Windows.Forms.ComboBox();
+            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.hourStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minEnd)).BeginInit();
@@ -167,10 +171,52 @@
             this.project.Size = new System.Drawing.Size(682, 63);
             this.project.TabIndex = 7;
             // 
+            // einkaufsbeleg
+            // 
+            this.einkaufsbeleg.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.einkaufsbeleg.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.einkaufsbeleg.FormattingEnabled = true;
+            this.einkaufsbeleg.Location = new System.Drawing.Point(12, 238);
+            this.einkaufsbeleg.Name = "einkaufsbeleg";
+            this.einkaufsbeleg.Size = new System.Drawing.Size(682, 63);
+            this.einkaufsbeleg.TabIndex = 8;
+            this.einkaufsbeleg.SelectedIndexChanged += new System.EventHandler(this.einkaufsbeleg_SelectedIndexChanged);
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescription.Location = new System.Drawing.Point(12, 313);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(682, 49);
+            this.txtDescription.TabIndex = 9;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(621, 374);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "&Save";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(12, 374);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "&Cancel";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // NewTimeEntry
             // 
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(708, 389);
+            this.ClientSize = new System.Drawing.Size(708, 413);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txtDescription);
+            this.Controls.Add(this.einkaufsbeleg);
             this.Controls.Add(this.project);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.minEnd);
@@ -205,5 +251,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox project;
+        private System.Windows.Forms.ComboBox einkaufsbeleg;
+        private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

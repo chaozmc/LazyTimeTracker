@@ -21,17 +21,22 @@ namespace LazyTimeTracker
         {
             NewTimeEntry newTimeEntry = new NewTimeEntry();
             newTimeEntry.ShowDialog(this);
-        }
-
-        private void projekteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmSettings frm = new frmSettings();
-            frm.Show();
+            dataGridView1.Update();
         }
 
         private void LazyTimeTracker_Load(object sender, EventArgs e)
         {
+            
+            //BookingElementHRElementColumn HRColumn = new BookingElementHRElementColumn();
+            //HRColumn.Name = "HR-Element";
+            //BookingElementTimeElementColumn TimeElementColumn = new BookingElementTimeElementColumn();
+            //TimeElementColumn.Name = "TimeElement";
+            //dataGridView1.Columns.Add(HRColumn);
+            //dataGridView1.Columns.Add(TimeElementColumn);
+
             notifyIcon1.Visible = true;
+            dataGridView1.DataSource = Program.timeEntries;
+
         }
 
         private void neuerEintragToolStripMenuItem_Click(object sender, EventArgs e)
@@ -68,6 +73,12 @@ namespace LazyTimeTracker
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSettings frm = new frmSettings();
+            frm.Show();
         }
     }
 }
