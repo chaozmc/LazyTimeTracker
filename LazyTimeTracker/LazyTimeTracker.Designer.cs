@@ -35,13 +35,11 @@
             this.neuerEintragToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menüToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAddEntry = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,9 +58,16 @@
             this.ColumnInvoice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnBemerkung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnBookingElement = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CopyDay = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmMain = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteSelectedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.cm1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.cmMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // notifyIcon1
@@ -103,38 +108,24 @@
             // menüToolStripMenuItem
             // 
             this.menüToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exportToolStripMenuItem,
+            this.CopyDay,
             this.settingsToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.menüToolStripMenuItem.Name = "menüToolStripMenuItem";
             this.menüToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.menüToolStripMenuItem.Text = "&Menü";
             // 
-            // exportToolStripMenuItem
-            // 
-            this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cSVToolStripMenuItem});
-            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
-            this.exportToolStripMenuItem.Text = "Export";
-            // 
-            // cSVToolStripMenuItem
-            // 
-            this.cSVToolStripMenuItem.Name = "cSVToolStripMenuItem";
-            this.cSVToolStripMenuItem.Size = new System.Drawing.Size(95, 22);
-            this.cSVToolStripMenuItem.Text = "CSV";
-            // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -149,31 +140,32 @@
             this.monthCalendar1.TabIndex = 1;
             this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalender1_DateSelected);
             // 
-            // button1
+            // btnAddEntry
             // 
-            this.button1.BackColor = System.Drawing.Color.SeaGreen;
-            this.button1.Location = new System.Drawing.Point(9, 207);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(221, 42);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Add Entry";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnAddEntry.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnAddEntry.Location = new System.Drawing.Point(9, 207);
+            this.btnAddEntry.Name = "btnAddEntry";
+            this.btnAddEntry.Size = new System.Drawing.Size(221, 42);
+            this.btnAddEntry.TabIndex = 3;
+            this.btnAddEntry.Text = "Add Entry";
+            this.btnAddEntry.UseVisualStyleBackColor = false;
+            this.btnAddEntry.Click += new System.EventHandler(this.btnAddEntry_Click);
             // 
-            // button2
+            // btnDelete
             // 
-            this.button2.BackColor = System.Drawing.Color.LightCoral;
-            this.button2.Location = new System.Drawing.Point(12, 255);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(218, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Remove";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnDelete.BackColor = System.Drawing.Color.LightCoral;
+            this.btnDelete.Location = new System.Drawing.Point(12, 255);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(218, 23);
+            this.btnDelete.TabIndex = 4;
+            this.btnDelete.Text = "Remove";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnStart,
@@ -187,6 +179,7 @@
             this.ColumnInvoice,
             this.ColumnBemerkung,
             this.ColumnBookingElement});
+            this.dataGridView1.ContextMenuStrip = this.cmMain;
             this.dataGridView1.Location = new System.Drawing.Point(242, 33);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -360,6 +353,49 @@
             this.ColumnBookingElement.Visible = false;
             this.ColumnBookingElement.Width = 90;
             // 
+            // CopyDay
+            // 
+            this.CopyDay.Name = "CopyDay";
+            this.CopyDay.Size = new System.Drawing.Size(180, 22);
+            this.CopyDay.Text = "Copy Day";
+            this.CopyDay.Click += new System.EventHandler(this.CopyDay_Click);
+            // 
+            // cmMain
+            // 
+            this.cmMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyDataToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.addEntryToolStripMenuItem,
+            this.deleteSelectedToolStripMenuItem});
+            this.cmMain.Name = "cmMain";
+            this.cmMain.Size = new System.Drawing.Size(181, 98);
+            // 
+            // copyDataToolStripMenuItem
+            // 
+            this.copyDataToolStripMenuItem.Name = "copyDataToolStripMenuItem";
+            this.copyDataToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.copyDataToolStripMenuItem.Text = "Copy Data";
+            this.copyDataToolStripMenuItem.Click += new System.EventHandler(this.copyDataToolStripMenuItem_Click);
+            // 
+            // addEntryToolStripMenuItem
+            // 
+            this.addEntryToolStripMenuItem.Name = "addEntryToolStripMenuItem";
+            this.addEntryToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.addEntryToolStripMenuItem.Text = "Add Entry";
+            this.addEntryToolStripMenuItem.Click += new System.EventHandler(this.addEntryToolStripMenuItem_Click);
+            // 
+            // deleteSelectedToolStripMenuItem
+            // 
+            this.deleteSelectedToolStripMenuItem.Name = "deleteSelectedToolStripMenuItem";
+            this.deleteSelectedToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteSelectedToolStripMenuItem.Text = "Delete Selected";
+            this.deleteSelectedToolStripMenuItem.Click += new System.EventHandler(this.deleteSelectedToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(151, 6);
+            // 
             // LazyTimeTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -367,8 +403,8 @@
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.ClientSize = new System.Drawing.Size(1206, 289);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnAddEntry);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -384,6 +420,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.cmMain.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -394,13 +431,11 @@
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menüToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cSVToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAddEntry;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ContextMenuStrip cm1;
         private System.Windows.Forms.ToolStripMenuItem neuerEintragToolStripMenuItem;
@@ -421,6 +456,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnInvoice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBemerkung;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBookingElement;
+        private System.Windows.Forms.ToolStripMenuItem CopyDay;
+        private System.Windows.Forms.ContextMenuStrip cmMain;
+        private System.Windows.Forms.ToolStripMenuItem copyDataToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem addEntryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteSelectedToolStripMenuItem;
     }
 }
 

@@ -84,7 +84,7 @@ namespace LazyTimeTracker
 
         public override string ToString()
         {
-            return this.Auftragsbezeichnung + " <" + this.auftrag + " | " + this.lstArt + ">";
+            return this.Auftragsbezeichnung;
         }
 
     }

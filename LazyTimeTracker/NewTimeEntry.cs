@@ -6,6 +6,8 @@ namespace LazyTimeTracker
     public partial class NewTimeEntry : Form
     {
         DateTime targetDate;
+        bool txtStartValid = false;
+        bool txtEndValid = false;
         public NewTimeEntry(DateTime TargetDate)
         {
             targetDate = TargetDate;
@@ -18,23 +20,7 @@ namespace LazyTimeTracker
             einkaufsbeleg.DataSource = Program.mySettings.Einkaufsbelege;
             txtStart.ValidatingType = typeof(DateTime);
             txtEnd.ValidatingType = typeof(DateTime);
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            DateTime DateTimeBegin = new DateTime(targetDate.Year, targetDate.Month, targetDate.Day, DateTime.Parse(txtStart.Text).Hour, DateTime.Parse(txtStart.Text).Minute, 0);
-            DateTime DateTimeEnd = new DateTime(targetDate.Year, targetDate.Month, targetDate.Day, DateTime.Parse(txtEnd.Text).Hour, DateTime.Parse(txtEnd.Text).Minute, 0);
-
-            TimeEntry timeEntry = new TimeEntry(DateTimeBegin, DateTimeEnd, (BookingElement)project.SelectedItem, (string)einkaufsbeleg.SelectedItem, txtDescription.Text);
-            LazyTimeTracker.timeEntries.Add(timeEntry);
-            this.Close();
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(txtStart.Text);
+            btnSave.Enabled = false;
         }
 
         private void txtStart_TypeValidationCompleted(object sender, TypeValidationEventArgs e)
@@ -42,10 +28,33 @@ namespace LazyTimeTracker
             if (!e.IsValidInput) {
                 MaskedTextBox mtb = (MaskedTextBox)sender;
                 mtb.BackColor = System.Drawing.Color.LightCoral;
+                if (mtb.Name == "txtStart")
+                {
+                    txtStartValid = false;
+                } else if (mtb.Name == "txtEnd")
+                {
+                    txtEndValid = false;
+                }
             } else
             {
                 MaskedTextBox mtb = (MaskedTextBox)sender;
                 mtb.BackColor =  System.Drawing.Color.LightGreen;
+                if (mtb.Name == "txtStart")
+                {
+                    txtStartValid = true;
+                }
+                else if (mtb.Name == "txtEnd")
+                {
+                    txtEndValid = true;
+                }
+            }
+
+            if (txtStartValid && txtEndValid)
+            {
+                btnSave.Enabled = true;
+            } else
+            {
+                btnSave.Enabled = false;
             }
         }
 
@@ -57,6 +66,34 @@ namespace LazyTimeTracker
         private void SetMaskedTextBoxSelectAll(MaskedTextBox txtbox)
         {
             txtbox.SelectAll();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            SaveAndClose();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txtDescription_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                SaveAndClose();
+            }
+        }
+
+        private void SaveAndClose()
+        {
+            DateTime DateTimeBegin = new DateTime(targetDate.Year, targetDate.Month, targetDate.Day, DateTime.Parse(txtStart.Text).Hour, DateTime.Parse(txtStart.Text).Minute, 0);
+            DateTime DateTimeEnd = new DateTime(targetDate.Year, targetDate.Month, targetDate.Day, DateTime.Parse(txtEnd.Text).Hour, DateTime.Parse(txtEnd.Text).Minute, 0);
+
+            TimeEntry timeEntry = new TimeEntry(DateTimeBegin, DateTimeEnd, (BookingElement)project.SelectedItem, (string)einkaufsbeleg.SelectedItem, txtDescription.Text);
+            LazyTimeTracker.timeEntries.Add(timeEntry);
+            this.Close();
         }
     }
 }

@@ -14,14 +14,6 @@ namespace LazyTimeTracker
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            NewTimeEntry newTimeEntry = new NewTimeEntry(monthCalendar1.SelectionStart);
-            newTimeEntry.ShowDialog(this);
-            dataGridView1.Update();
-            SaveObjectsForDay(monthCalendar1.SelectionStart);
-        }
-
         private void LazyTimeTracker_Load(object sender, EventArgs e)
         {
             notifyIcon1.Visible = true;
@@ -32,9 +24,7 @@ namespace LazyTimeTracker
 
         private void neuerEintragToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            NewTimeEntry newTimeEntry = new NewTimeEntry(monthCalendar1.SelectionStart);
-            newTimeEntry.ShowDialog(this);
-            dataGridView1.Update();
+            AddEntry();
         }
 
         private void TaskIcon_DoubleClick(object sender, MouseEventArgs e)
@@ -80,6 +70,103 @@ namespace LazyTimeTracker
             LoadObjectsForDay(monthCalendar1.SelectionStart);
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DeleteSelectedEntries();
+        }
+
+        private void CopyDay_Click(object sender, EventArgs e)
+        {
+            SelectAndCopyToClipboard();
+        }
+
+        private void copyDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SelectAndCopyToClipboard();
+        }
+
+        private void addEntryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddEntry();
+        }
+
+        private void btnAddEntry_Click(object sender, EventArgs e)
+        {
+            AddEntry();
+        }
+
+        private void deleteSelectedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeleteSelectedEntries();
+        }
+
+        //Helper Functions
+        #region helper-functions
+
+        private void AddEntry()
+        {
+            NewTimeEntry newTimeEntry = new NewTimeEntry(monthCalendar1.SelectionStart);
+            newTimeEntry.ShowDialog(this);
+            dataGridView1.Update();
+            SaveObjectsForDay(monthCalendar1.SelectionStart);
+        }
+
+        private void DeleteSelectedEntries()
+        {
+            if (MessageBox.Show("Really delete?", "Quenstion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    dataGridView1.Rows.Remove(row);
+                }
+                dataGridView1.Update();
+                SaveObjectsForDay(monthCalendar1.SelectionStart);
+            }
+        }
+
+        private void SelectAndCopyToClipboard()
+        {
+            dataGridView1.SelectAll();
+            Clipboard.SetDataObject(dataGridView1.GetClipboardContent(), false);
+            MessageBox.Show("Make sure you have " + dataGridView1.Rows.Count.ToString() + " rows in SAP available before pasting.", "Hinweis", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public void LoadObjectsForDay(DateTime DateSelected)
+        {
+            string entriesDirectoryPath =
+                Application.StartupPath + Path.DirectorySeparatorChar + "data" +
+                Path.DirectorySeparatorChar + DateSelected.Year.ToString() +
+                Path.DirectorySeparatorChar + DateSelected.Month.ToString();
+
+            string entriesPath =
+                entriesDirectoryPath +
+                Path.DirectorySeparatorChar + DateSelected.Day.ToString() + ".json";
+
+            if (File.Exists(entriesPath))
+            {
+                FileStream fsTimeEntries =
+                new FileStream(
+                    entriesPath,
+                    FileMode.Open,
+                    FileAccess.Read);
+
+                StreamReader srTimeEntriesFs = new StreamReader(fsTimeEntries);
+
+                string timeEntriesObjects = srTimeEntriesFs.ReadToEnd();
+                timeEntries = System.Text.Json.JsonSerializer.Deserialize<BindingList<TimeEntry>>(timeEntriesObjects);
+
+                srTimeEntriesFs.Close();
+                dataGridView1.DataSource = timeEntries;
+                dataGridView1.Update();
+
+            }
+            else
+            {
+                timeEntries.Clear();
+                dataGridView1.Update();
+            }
+        }
+
         public void LoadSettingsObjects()
         {
             string dataDirectory = Application.StartupPath + Path.DirectorySeparatorChar + "data";
@@ -94,7 +181,7 @@ namespace LazyTimeTracker
                 StreamReader srBookingElements = new StreamReader(fsBookingElements);
 
                 string settingsObjectString = srBookingElements.ReadToEnd();
-                Program.mySettings.bookingElements = System.Text.Json.JsonSerializer.Deserialize<List<BookingElement>>(settingsObjectString);
+                Program.mySettings.bookingElements = System.Text.Json.JsonSerializer.Deserialize<BindingList<BookingElement>>(settingsObjectString);
 
                 srBookingElements.Close();
             }
@@ -110,7 +197,7 @@ namespace LazyTimeTracker
                 StreamReader srInvoiceElements = new StreamReader(fsInvoiceElements);
 
                 string invoiceObjectString = srInvoiceElements.ReadToEnd();
-                Program.mySettings.Einkaufsbelege = System.Text.Json.JsonSerializer.Deserialize<string[]>(invoiceObjectString);
+                Program.mySettings.Einkaufsbelege = System.Text.Json.JsonSerializer.Deserialize<BindingList<string>>(invoiceObjectString);
 
                 srInvoiceElements.Close();
             }
@@ -126,7 +213,7 @@ namespace LazyTimeTracker
             //Buchungselemente sichern
             FileStream fsBookingElements =
                 new FileStream(
-                    dataDirectory + 
+                    dataDirectory +
                     Path.DirectorySeparatorChar + "bookingElements.json",
                     FileMode.OpenOrCreate,
                     FileAccess.Write);
@@ -160,7 +247,7 @@ namespace LazyTimeTracker
                 Path.DirectorySeparatorChar + DateSelected.Month.ToString();
 
             string entriesPath =
-                entriesDirectoryPath + 
+                entriesDirectoryPath +
                 Path.DirectorySeparatorChar + DateSelected.Day.ToString() + ".json";
 
             if (!Directory.Exists(entriesDirectoryPath))
@@ -181,56 +268,9 @@ namespace LazyTimeTracker
             swTimeEntriesFs.Close();
         }
 
-        public void LoadObjectsForDay(DateTime DateSelected)
-        {
-            string entriesDirectoryPath =
-                Application.StartupPath + Path.DirectorySeparatorChar + "data" +
-                Path.DirectorySeparatorChar + DateSelected.Year.ToString() +
-                Path.DirectorySeparatorChar + DateSelected.Month.ToString();
 
-            string entriesPath =
-                entriesDirectoryPath +
-                Path.DirectorySeparatorChar + DateSelected.Day.ToString() + ".json";
+        #endregion
 
-            if (File.Exists(entriesPath))
-            {
-                FileStream fsTimeEntries =
-                new FileStream(
-                    entriesPath,
-                    FileMode.Open,
-                    FileAccess.Read);
 
-                StreamReader srTimeEntriesFs = new StreamReader(fsTimeEntries);
-
-                string timeEntriesObjects = srTimeEntriesFs.ReadToEnd();
-                timeEntries = System.Text.Json.JsonSerializer.Deserialize<BindingList<TimeEntry>>(timeEntriesObjects);
-
-                srTimeEntriesFs.Close();
-                dataGridView1.DataSource = timeEntries;
-                dataGridView1.Update();
-
-            } else
-            {
-                timeEntries.Clear();
-                dataGridView1.Update();
-            }
-
-            
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Really delete?", "Quenstion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-                {
-                    dataGridView1.Rows.Remove(row);
-                }
-                dataGridView1.Update();
-                SaveObjectsForDay(monthCalendar1.SelectionStart);
-            }
-            
-        }
     }
 }
