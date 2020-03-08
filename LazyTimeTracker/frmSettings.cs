@@ -19,7 +19,7 @@ namespace LazyTimeTracker
 
         private void button1_Click(object sender, EventArgs e)
         {
-            BookingElement temp = new BookingElement("HAAI", "9034243812904839201", "HR36369");
+            BookingElement temp = new BookingElement("Name", "Nummer", "LstArt");
             TimeEntryEditor timeEntryEditor = new TimeEntryEditor(temp, false);
             timeEntryEditor.ShowDialog(this);
             listBox1.Update();
