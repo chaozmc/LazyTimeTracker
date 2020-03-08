@@ -8,9 +8,7 @@ namespace LazyTimeTracker
 {
     static class Program
     {
-        public static IList<TimeEntry> timeEntries = new System.ComponentModel.BindingList<TimeEntry>();
-        public static IList<BookingElement> bookingElements = new System.ComponentModel.BindingList<BookingElement>();
-        public static IList<string> Einkaufsbelege = new System.ComponentModel.BindingList<string>();
+        public static Settings mySettings = new Settings();
         /// <summary>
         /// Der Haupteinstiegspunkt für die Anwendung.
         /// </summary>

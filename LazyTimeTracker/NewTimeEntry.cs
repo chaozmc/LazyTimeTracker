@@ -14,8 +14,8 @@ namespace LazyTimeTracker
 
         private void NewTimeEntry_Load(object sender, EventArgs e)
         {
-            project.DataSource = Program.bookingElements;
-            einkaufsbeleg.DataSource = Program.Einkaufsbelege;
+            project.DataSource = Program.mySettings.bookingElements;
+            einkaufsbeleg.DataSource = Program.mySettings.Einkaufsbelege;
             hourStart.Value = DateTime.Now.Hour;
             minStart.Value = DateTime.Now.Minute;
             hourEnd.Value = DateTime.Now.Hour;
@@ -54,7 +54,7 @@ namespace LazyTimeTracker
             DateTime DateTimeEnd = new DateTime(targetDate.Year, targetDate.Month, targetDate.Day, (int)hourEnd.Value, (int)minEnd.Value, 0);
 
             TimeEntry timeEntry = new TimeEntry(DateTimeBegin, DateTimeEnd, (BookingElement)project.SelectedItem, (string)einkaufsbeleg.SelectedItem, txtDescription.Text);
-            Program.timeEntries.Add(timeEntry);
+            LazyTimeTracker.timeEntries.Add(timeEntry);
             this.Close();
 
         }

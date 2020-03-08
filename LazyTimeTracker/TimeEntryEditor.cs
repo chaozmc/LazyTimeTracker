@@ -35,11 +35,11 @@ namespace LazyTimeTracker
             BookingElementIRepresent.DisplayName = txtName.Text;
             if (!Edit)
             {
-                Program.bookingElements.Add(BookingElementIRepresent);
+                Program.mySettings.bookingElements.Add(BookingElementIRepresent);
             } else
             {
-                Program.bookingElements.Remove(BookingElementIRepresent);
-                Program.bookingElements.Add(BookingElementIRepresent);
+                Program.mySettings.bookingElements.Remove(BookingElementIRepresent);
+                Program.mySettings.bookingElements.Add(BookingElementIRepresent);
             }
             this.Close();
         }
