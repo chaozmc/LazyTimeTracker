@@ -208,7 +208,7 @@ namespace LazyTimeTracker
                 StreamReader srTimeEntriesFs = new StreamReader(fsTimeEntries);
 
                 string timeEntriesObjects = srTimeEntriesFs.ReadToEnd();
-                timeEntries = System.Text.Json.JsonSerializer.Deserialize<List<TimeEntry>>(timeEntriesObjects);
+                timeEntries = System.Text.Json.JsonSerializer.Deserialize<BindingList<TimeEntry>>(timeEntriesObjects);
 
                 srTimeEntriesFs.Close();
                 dataGridView1.DataSource = timeEntries;
@@ -217,7 +217,6 @@ namespace LazyTimeTracker
             } else
             {
                 timeEntries.Clear();
-                dataGridView1.DataSource = null;
                 dataGridView1.Update();
             }
 
@@ -225,5 +224,18 @@ namespace LazyTimeTracker
 
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Really delete?", "Quenstion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    dataGridView1.Rows.Remove(row);
+                }
+                dataGridView1.Update();
+                SaveObjectsForDay(monthCalendar1.SelectionStart);
+            }
+            
+        }
     }
 }
