@@ -43,19 +43,23 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.columnStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTimeElement = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnHRElement = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnInvoice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnBemerkung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnBookingElement = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnVortag = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAbAnArt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTimeElement = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAuftragsbezeichnung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnHRElement = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnLeistungsart = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnInvoice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnBemerkung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnBookingElement = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cm1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -92,7 +96,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(971, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1206, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -174,8 +178,12 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnStart,
             this.ColumnEnd,
+            this.ColumnVortag,
+            this.ColumnAbAnArt,
             this.ColumnTimeElement,
+            this.ColumnAuftragsbezeichnung,
             this.ColumnHRElement,
+            this.ColumnLeistungsart,
             this.ColumnInvoice,
             this.ColumnBemerkung,
             this.ColumnBookingElement});
@@ -183,84 +191,8 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(717, 245);
+            this.dataGridView1.Size = new System.Drawing.Size(952, 245);
             this.dataGridView1.TabIndex = 5;
-            // 
-            // columnStart
-            // 
-            this.columnStart.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.columnStart.DataPropertyName = "StartTime";
-            this.columnStart.HeaderText = "Start";
-            this.columnStart.MinimumWidth = 6;
-            this.columnStart.Name = "columnStart";
-            this.columnStart.ReadOnly = true;
-            this.columnStart.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.columnStart.Width = 35;
-            // 
-            // ColumnEnd
-            // 
-            this.ColumnEnd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ColumnEnd.DataPropertyName = "EndTime";
-            this.ColumnEnd.HeaderText = "End";
-            this.ColumnEnd.MinimumWidth = 6;
-            this.ColumnEnd.Name = "ColumnEnd";
-            this.ColumnEnd.ReadOnly = true;
-            this.ColumnEnd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColumnEnd.Width = 32;
-            // 
-            // ColumnTimeElement
-            // 
-            this.ColumnTimeElement.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ColumnTimeElement.DataPropertyName = "TimeElement";
-            this.ColumnTimeElement.HeaderText = "TimeElement";
-            this.ColumnTimeElement.MinimumWidth = 6;
-            this.ColumnTimeElement.Name = "ColumnTimeElement";
-            this.ColumnTimeElement.ReadOnly = true;
-            this.ColumnTimeElement.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColumnTimeElement.Width = 74;
-            // 
-            // ColumnHRElement
-            // 
-            this.ColumnHRElement.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ColumnHRElement.DataPropertyName = "HRElement";
-            this.ColumnHRElement.HeaderText = "HRElement";
-            this.ColumnHRElement.MinimumWidth = 6;
-            this.ColumnHRElement.Name = "ColumnHRElement";
-            this.ColumnHRElement.ReadOnly = true;
-            this.ColumnHRElement.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColumnHRElement.Width = 67;
-            // 
-            // ColumnInvoice
-            // 
-            this.ColumnInvoice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnInvoice.DataPropertyName = "Invoice";
-            this.ColumnInvoice.HeaderText = "Einkaufsbeleg";
-            this.ColumnInvoice.MinimumWidth = 6;
-            this.ColumnInvoice.Name = "ColumnInvoice";
-            this.ColumnInvoice.ReadOnly = true;
-            this.ColumnInvoice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ColumnBemerkung
-            // 
-            this.ColumnBemerkung.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ColumnBemerkung.DataPropertyName = "Description";
-            this.ColumnBemerkung.HeaderText = "Bemerkung";
-            this.ColumnBemerkung.MinimumWidth = 6;
-            this.ColumnBemerkung.Name = "ColumnBemerkung";
-            this.ColumnBemerkung.ReadOnly = true;
-            this.ColumnBemerkung.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColumnBemerkung.Width = 67;
-            // 
-            // ColumnBookingElement
-            // 
-            this.ColumnBookingElement.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ColumnBookingElement.DataPropertyName = "BookingElement";
-            this.ColumnBookingElement.HeaderText = "BookingElement";
-            this.ColumnBookingElement.MinimumWidth = 6;
-            this.ColumnBookingElement.Name = "ColumnBookingElement";
-            this.ColumnBookingElement.ReadOnly = true;
-            this.ColumnBookingElement.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColumnBookingElement.Visible = false;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -310,12 +242,130 @@
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.Width = 125;
             // 
+            // columnStart
+            // 
+            this.columnStart.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.columnStart.DataPropertyName = "StartTime";
+            this.columnStart.HeaderText = "Start";
+            this.columnStart.MinimumWidth = 6;
+            this.columnStart.Name = "columnStart";
+            this.columnStart.ReadOnly = true;
+            this.columnStart.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.columnStart.Width = 35;
+            // 
+            // ColumnEnd
+            // 
+            this.ColumnEnd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ColumnEnd.DataPropertyName = "EndTime";
+            this.ColumnEnd.HeaderText = "End";
+            this.ColumnEnd.MinimumWidth = 6;
+            this.ColumnEnd.Name = "ColumnEnd";
+            this.ColumnEnd.ReadOnly = true;
+            this.ColumnEnd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColumnEnd.Width = 32;
+            // 
+            // ColumnVortag
+            // 
+            this.ColumnVortag.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ColumnVortag.DataPropertyName = "Vortag";
+            this.ColumnVortag.HeaderText = "Vortag";
+            this.ColumnVortag.Name = "ColumnVortag";
+            this.ColumnVortag.ReadOnly = true;
+            this.ColumnVortag.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColumnVortag.Width = 44;
+            // 
+            // ColumnAbAnArt
+            // 
+            this.ColumnAbAnArt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ColumnAbAnArt.DataPropertyName = "AbAnArt";
+            this.ColumnAbAnArt.HeaderText = "AbAnArt";
+            this.ColumnAbAnArt.Name = "ColumnAbAnArt";
+            this.ColumnAbAnArt.ReadOnly = true;
+            this.ColumnAbAnArt.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColumnAbAnArt.Width = 52;
+            // 
+            // ColumnTimeElement
+            // 
+            this.ColumnTimeElement.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ColumnTimeElement.DataPropertyName = "TimeElement";
+            this.ColumnTimeElement.HeaderText = "TimeElement";
+            this.ColumnTimeElement.MinimumWidth = 6;
+            this.ColumnTimeElement.Name = "ColumnTimeElement";
+            this.ColumnTimeElement.ReadOnly = true;
+            this.ColumnTimeElement.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColumnTimeElement.Width = 74;
+            // 
+            // ColumnAuftragsbezeichnung
+            // 
+            this.ColumnAuftragsbezeichnung.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ColumnAuftragsbezeichnung.DataPropertyName = "Auftragsbezeichnung";
+            this.ColumnAuftragsbezeichnung.HeaderText = "Auftragsbezeichnung";
+            this.ColumnAuftragsbezeichnung.Name = "ColumnAuftragsbezeichnung";
+            this.ColumnAuftragsbezeichnung.ReadOnly = true;
+            this.ColumnAuftragsbezeichnung.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColumnAuftragsbezeichnung.Width = 113;
+            // 
+            // ColumnHRElement
+            // 
+            this.ColumnHRElement.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ColumnHRElement.DataPropertyName = "LstArt";
+            this.ColumnHRElement.HeaderText = "LstArt";
+            this.ColumnHRElement.MinimumWidth = 6;
+            this.ColumnHRElement.Name = "ColumnHRElement";
+            this.ColumnHRElement.ReadOnly = true;
+            this.ColumnHRElement.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColumnHRElement.Width = 40;
+            // 
+            // ColumnLeistungsart
+            // 
+            this.ColumnLeistungsart.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ColumnLeistungsart.DataPropertyName = "Leistungsart";
+            this.ColumnLeistungsart.HeaderText = "Leistungsart";
+            this.ColumnLeistungsart.Name = "ColumnLeistungsart";
+            this.ColumnLeistungsart.ReadOnly = true;
+            this.ColumnLeistungsart.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColumnLeistungsart.Width = 70;
+            // 
+            // ColumnInvoice
+            // 
+            this.ColumnInvoice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ColumnInvoice.DataPropertyName = "Invoice";
+            this.ColumnInvoice.HeaderText = "Einkaufsbeleg";
+            this.ColumnInvoice.MinimumWidth = 6;
+            this.ColumnInvoice.Name = "ColumnInvoice";
+            this.ColumnInvoice.ReadOnly = true;
+            this.ColumnInvoice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColumnInvoice.Width = 80;
+            // 
+            // ColumnBemerkung
+            // 
+            this.ColumnBemerkung.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ColumnBemerkung.DataPropertyName = "Description";
+            this.ColumnBemerkung.HeaderText = "Bemerkung";
+            this.ColumnBemerkung.MinimumWidth = 6;
+            this.ColumnBemerkung.Name = "ColumnBemerkung";
+            this.ColumnBemerkung.ReadOnly = true;
+            this.ColumnBemerkung.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColumnBemerkung.Width = 67;
+            // 
+            // ColumnBookingElement
+            // 
+            this.ColumnBookingElement.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ColumnBookingElement.DataPropertyName = "BookingElement";
+            this.ColumnBookingElement.HeaderText = "BookingElement";
+            this.ColumnBookingElement.MinimumWidth = 6;
+            this.ColumnBookingElement.Name = "ColumnBookingElement";
+            this.ColumnBookingElement.ReadOnly = true;
+            this.ColumnBookingElement.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColumnBookingElement.Visible = false;
+            this.ColumnBookingElement.Width = 90;
+            // 
             // LazyTimeTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.ClientSize = new System.Drawing.Size(971, 289);
+            this.ClientSize = new System.Drawing.Size(1206, 289);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -362,8 +412,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnStart;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnEnd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnVortag;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAbAnArt;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTimeElement;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAuftragsbezeichnung;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnHRElement;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLeistungsart;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnInvoice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBemerkung;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBookingElement;

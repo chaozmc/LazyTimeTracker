@@ -23,16 +23,16 @@ namespace LazyTimeTracker
 
         private void TimeEntryEditor_Load(object sender, EventArgs e)
         {
-            txtName.Text = BookingElementIRepresent.DisplayName;
+            txtName.Text = BookingElementIRepresent.Auftragsbezeichnung;
             txtBuchungsElement.Text = BookingElementIRepresent.TimeElement;
-            txtHRElement.Text = BookingElementIRepresent.HRElement;
+            txtHRElement.Text = BookingElementIRepresent.LstArt;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             BookingElementIRepresent.TimeElement = txtBuchungsElement.Text;
-            BookingElementIRepresent.HRElement = txtHRElement.Text;
-            BookingElementIRepresent.DisplayName = txtName.Text;
+            BookingElementIRepresent.LstArt = txtHRElement.Text;
+            BookingElementIRepresent.Auftragsbezeichnung = txtName.Text;
             if (!Edit)
             {
                 Program.mySettings.bookingElements.Add(BookingElementIRepresent);
