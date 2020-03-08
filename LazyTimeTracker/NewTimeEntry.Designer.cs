@@ -29,131 +29,22 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewTimeEntry));
-            this.hourStart = new System.Windows.Forms.NumericUpDown();
-            this.minStart = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
-            this.minEnd = new System.Windows.Forms.NumericUpDown();
-            this.hourEnd = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.project = new System.Windows.Forms.ComboBox();
             this.einkaufsbeleg = new System.Windows.Forms.ComboBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.hourStart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.minStart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.minEnd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hourEnd)).BeginInit();
+            this.txtStart = new System.Windows.Forms.MaskedTextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.txtEnd = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
-            // 
-            // hourStart
-            // 
-            this.hourStart.BackColor = System.Drawing.Color.LightGreen;
-            this.hourStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hourStart.Location = new System.Drawing.Point(12, 12);
-            this.hourStart.Maximum = new decimal(new int[] {
-            23,
-            0,
-            0,
-            0});
-            this.hourStart.Name = "hourStart";
-            this.hourStart.Size = new System.Drawing.Size(139, 116);
-            this.hourStart.TabIndex = 0;
-            this.hourStart.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
-            this.hourStart.Value = new decimal(new int[] {
-            23,
-            0,
-            0,
-            0});
-            this.hourStart.Enter += new System.EventHandler(this.hourStart_Enter);
-            // 
-            // minStart
-            // 
-            this.minStart.BackColor = System.Drawing.Color.LightGreen;
-            this.minStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.minStart.Location = new System.Drawing.Point(177, 12);
-            this.minStart.Maximum = new decimal(new int[] {
-            59,
-            0,
-            0,
-            0});
-            this.minStart.Name = "minStart";
-            this.minStart.Size = new System.Drawing.Size(133, 116);
-            this.minStart.TabIndex = 1;
-            this.minStart.Value = new decimal(new int[] {
-            59,
-            0,
-            0,
-            0});
-            this.minStart.Enter += new System.EventHandler(this.minStart_Enter);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(132, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 108);
-            this.label1.TabIndex = 2;
-            this.label1.Text = ":";
-            // 
-            // minEnd
-            // 
-            this.minEnd.BackColor = System.Drawing.Color.LightCoral;
-            this.minEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.minEnd.Location = new System.Drawing.Point(564, 12);
-            this.minEnd.Maximum = new decimal(new int[] {
-            59,
-            0,
-            0,
-            0});
-            this.minEnd.Name = "minEnd";
-            this.minEnd.Size = new System.Drawing.Size(130, 116);
-            this.minEnd.TabIndex = 4;
-            this.minEnd.Value = new decimal(new int[] {
-            59,
-            0,
-            0,
-            0});
-            this.minEnd.Enter += new System.EventHandler(this.minEnd_Enter);
-            // 
-            // hourEnd
-            // 
-            this.hourEnd.BackColor = System.Drawing.Color.LightCoral;
-            this.hourEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hourEnd.Location = new System.Drawing.Point(399, 12);
-            this.hourEnd.Maximum = new decimal(new int[] {
-            23,
-            0,
-            0,
-            0});
-            this.hourEnd.Name = "hourEnd";
-            this.hourEnd.Size = new System.Drawing.Size(134, 116);
-            this.hourEnd.TabIndex = 3;
-            this.hourEnd.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
-            this.hourEnd.Value = new decimal(new int[] {
-            23,
-            0,
-            0,
-            0});
-            this.hourEnd.Enter += new System.EventHandler(this.hourEnd_Enter);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(515, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 108);
-            this.label2.TabIndex = 5;
-            this.label2.Text = ":";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(322, 14);
+            this.label3.Location = new System.Drawing.Point(319, 14);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 108);
             this.label3.TabIndex = 6;
@@ -180,7 +71,6 @@
             this.einkaufsbeleg.Name = "einkaufsbeleg";
             this.einkaufsbeleg.Size = new System.Drawing.Size(682, 63);
             this.einkaufsbeleg.TabIndex = 8;
-            this.einkaufsbeleg.SelectedIndexChanged += new System.EventHandler(this.einkaufsbeleg_SelectedIndexChanged);
             // 
             // txtDescription
             // 
@@ -209,22 +99,57 @@
             this.button2.Text = "&Cancel";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // txtStart
+            // 
+            this.txtStart.BeepOnError = true;
+            this.txtStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStart.Location = new System.Drawing.Point(12, 11);
+            this.txtStart.Mask = "00:00";
+            this.txtStart.Name = "txtStart";
+            this.txtStart.RejectInputOnFirstFailure = true;
+            this.txtStart.Size = new System.Drawing.Size(249, 116);
+            this.txtStart.TabIndex = 1;
+            this.txtStart.ValidatingType = typeof(System.DateTime);
+            this.txtStart.TypeValidationCompleted += new System.Windows.Forms.TypeValidationEventHandler(this.txtStart_TypeValidationCompleted);
+            this.txtStart.Enter += new System.EventHandler(this.txtStart_Enter);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(302, 373);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 13;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // txtEnd
+            // 
+            this.txtEnd.BeepOnError = true;
+            this.txtEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEnd.Location = new System.Drawing.Point(445, 11);
+            this.txtEnd.Mask = "00:00";
+            this.txtEnd.Name = "txtEnd";
+            this.txtEnd.RejectInputOnFirstFailure = true;
+            this.txtEnd.Size = new System.Drawing.Size(249, 116);
+            this.txtEnd.TabIndex = 2;
+            this.txtEnd.ValidatingType = typeof(System.DateTime);
+            this.txtEnd.TypeValidationCompleted += new System.Windows.Forms.TypeValidationEventHandler(this.txtStart_TypeValidationCompleted);
+            this.txtEnd.Enter += new System.EventHandler(this.txtStart_Enter);
+            // 
             // NewTimeEntry
             // 
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(708, 413);
+            this.Controls.Add(this.txtEnd);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.txtStart);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.einkaufsbeleg);
             this.Controls.Add(this.project);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.minEnd);
-            this.Controls.Add(this.hourEnd);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.minStart);
-            this.Controls.Add(this.hourStart);
-            this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -232,28 +157,20 @@
             this.Name = "NewTimeEntry";
             this.Text = "Neuer Eintrag";
             this.Load += new System.EventHandler(this.NewTimeEntry_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.hourStart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.minStart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.minEnd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hourEnd)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.NumericUpDown hourStart;
-        private System.Windows.Forms.NumericUpDown minStart;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown minEnd;
-        private System.Windows.Forms.NumericUpDown hourEnd;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox project;
         private System.Windows.Forms.ComboBox einkaufsbeleg;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.MaskedTextBox txtStart;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.MaskedTextBox txtEnd;
     }
 }

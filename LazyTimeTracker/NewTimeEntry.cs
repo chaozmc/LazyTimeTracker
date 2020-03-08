@@ -16,47 +16,47 @@ namespace LazyTimeTracker
         {
             project.DataSource = Program.mySettings.bookingElements;
             einkaufsbeleg.DataSource = Program.mySettings.Einkaufsbelege;
-            hourStart.Value = DateTime.Now.Hour;
-            minStart.Value = DateTime.Now.Minute;
-            hourEnd.Value = DateTime.Now.Hour;
-            minEnd.Value = DateTime.Now.Minute;
-
-        }
-
-        private void hourStart_Enter(object sender, EventArgs e)
-        {
-            hourStart.Select(0, hourStart.Text.Length);
-        }
-
-        private void minStart_Enter(object sender, EventArgs e)
-        {
-            minStart.Select(0, minStart.Text.Length);
-        }
-
-        private void hourEnd_Enter(object sender, EventArgs e)
-        {
-            hourEnd.Select(0, hourEnd.Text.Length);
-        }
-
-        private void minEnd_Enter(object sender, EventArgs e)
-        {
-            minEnd.Select(0, minEnd.Text.Length);
-        }
-
-        private void einkaufsbeleg_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            txtStart.ValidatingType = typeof(DateTime);
+            txtEnd.ValidatingType = typeof(DateTime);
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DateTime DateTimeBegin = new DateTime(targetDate.Year, targetDate.Month, targetDate.Day, (int)hourStart.Value, (int)minStart.Value, 0);
-            DateTime DateTimeEnd = new DateTime(targetDate.Year, targetDate.Month, targetDate.Day, (int)hourEnd.Value, (int)minEnd.Value, 0);
+            DateTime DateTimeBegin = new DateTime(targetDate.Year, targetDate.Month, targetDate.Day, DateTime.Parse(txtStart.Text).Hour, DateTime.Parse(txtStart.Text).Minute, 0);
+            DateTime DateTimeEnd = new DateTime(targetDate.Year, targetDate.Month, targetDate.Day, DateTime.Parse(txtEnd.Text).Hour, DateTime.Parse(txtEnd.Text).Minute, 0);
 
             TimeEntry timeEntry = new TimeEntry(DateTimeBegin, DateTimeEnd, (BookingElement)project.SelectedItem, (string)einkaufsbeleg.SelectedItem, txtDescription.Text);
             LazyTimeTracker.timeEntries.Add(timeEntry);
             this.Close();
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(txtStart.Text);
+        }
+
+        private void txtStart_TypeValidationCompleted(object sender, TypeValidationEventArgs e)
+        {
+            if (!e.IsValidInput) {
+                MaskedTextBox mtb = (MaskedTextBox)sender;
+                mtb.BackColor = System.Drawing.Color.LightCoral;
+            } else
+            {
+                MaskedTextBox mtb = (MaskedTextBox)sender;
+                mtb.BackColor =  System.Drawing.Color.LightGreen;
+            }
+        }
+
+        private void txtStart_Enter(object sender, EventArgs e)
+        {
+            BeginInvoke((Action)delegate { SetMaskedTextBoxSelectAll((MaskedTextBox)sender); });
+        }
+
+        private void SetMaskedTextBoxSelectAll(MaskedTextBox txtbox)
+        {
+            txtbox.SelectAll();
         }
     }
 }
