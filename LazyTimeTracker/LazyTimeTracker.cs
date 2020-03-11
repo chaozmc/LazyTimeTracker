@@ -126,9 +126,11 @@ namespace LazyTimeTracker
 
         private void SelectAndCopyToClipboard()
         {
+            if (dataGridView1.Rows.Count > 0) { 
             dataGridView1.SelectAll();
             Clipboard.SetDataObject(dataGridView1.GetClipboardContent(), false);
             MessageBox.Show("Make sure you have " + dataGridView1.Rows.Count.ToString() + " rows in SAP available before pasting.", "Hinweis", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         public void LoadObjectsForDay(DateTime DateSelected)
