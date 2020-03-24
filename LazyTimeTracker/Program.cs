@@ -15,6 +15,12 @@ namespace LazyTimeTracker
         [STAThread]
         static void Main()
         {
+            string dataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + System.IO.Path.DirectorySeparatorChar + "LazyTimeTracker";
+
+            if (!System.IO.Directory.Exists(dataPath))
+            {
+                System.IO.Directory.CreateDirectory(dataPath);
+            }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LazyTimeTracker());

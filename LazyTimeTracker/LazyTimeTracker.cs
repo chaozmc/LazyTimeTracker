@@ -135,8 +135,10 @@ namespace LazyTimeTracker
 
         public void LoadObjectsForDay(DateTime DateSelected)
         {
+            
             string entriesDirectoryPath =
-                Application.StartupPath + Path.DirectorySeparatorChar + "data" +
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + Path.DirectorySeparatorChar + "LazyTimeTracker" +
+                Path.DirectorySeparatorChar + "data" +
                 Path.DirectorySeparatorChar + DateSelected.Year.ToString() +
                 Path.DirectorySeparatorChar + DateSelected.Month.ToString();
 
@@ -171,7 +173,9 @@ namespace LazyTimeTracker
 
         public void LoadSettingsObjects()
         {
-            string dataDirectory = Application.StartupPath + Path.DirectorySeparatorChar + "data";
+            
+            string dataDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + Path.DirectorySeparatorChar + "LazyTimeTracker" +
+                Path.DirectorySeparatorChar + "data";
             if (File.Exists(dataDirectory + Path.DirectorySeparatorChar + "bookingElements.json"))
             {
                 FileStream fsBookingElements =
@@ -207,7 +211,8 @@ namespace LazyTimeTracker
 
         public void SaveSettingsObjects()
         {
-            string dataDirectory = Application.StartupPath + Path.DirectorySeparatorChar + "data";
+            string dataDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + Path.DirectorySeparatorChar + "LazyTimeTracker" +
+                 Path.DirectorySeparatorChar + "data";
             if (!Directory.Exists(dataDirectory))
             {
                 Directory.CreateDirectory(dataDirectory);
@@ -244,7 +249,8 @@ namespace LazyTimeTracker
         public void SaveObjectsForDay(DateTime DateSelected)
         {
             string entriesDirectoryPath =
-                Application.StartupPath + Path.DirectorySeparatorChar + "data" +
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + Path.DirectorySeparatorChar + "LazyTimeTracker" +
+                Path.DirectorySeparatorChar + "data" +
                 Path.DirectorySeparatorChar + DateSelected.Year.ToString() +
                 Path.DirectorySeparatorChar + DateSelected.Month.ToString();
 

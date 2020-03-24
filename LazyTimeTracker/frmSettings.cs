@@ -67,5 +67,32 @@ namespace LazyTimeTracker
                 listBox1.Update();
             }
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+
+                //// The path to the key where Windows looks for startup applications
+                //Microsoft.Win32.RegistryKey rkApp = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(
+                //                    @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
+
+                ////Path to launch shortcut
+                //string startPath = Environment.GetFolderPath(Environment.SpecialFolder.Programs)
+                //                   + @"\YourPublisher\YourSuite\YourProduct.appref-ms";
+
+                //rkApp.SetValue("YourProduct", startPath);
+
+            }
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            string dataDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + System.IO.Path.DirectorySeparatorChar + "LazyTimeTracker" +
+                System.IO.Path.DirectorySeparatorChar + "data";
+            System.Diagnostics.Process.Start("explorer.exe", dataDirectory);
+
+        }
     }
 }
